@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { PropsWithChildren, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { IRootState } from './store';
+// import { toggleRTL, toggleTheme, toggleLocale, toggleMenu, toggleLayout, toggleAnimation, toggleNavbar, toggleSemidark } from './store/themeConfigSlice';
+// import store from './store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+function App({ children }: PropsWithChildren) {
+    // const themeConfig = useSelector((state: IRootState) => state.themeConfig);
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     dispatch(toggleTheme(localStorage.getItem('theme') || themeConfig.theme));
+    //     dispatch(toggleMenu(localStorage.getItem('menu') || themeConfig.menu));
+    //     dispatch(toggleLayout(localStorage.getItem('layout') || themeConfig.layout));
+    //     dispatch(toggleRTL(localStorage.getItem('rtlClass') || themeConfig.rtlClass));
+    //     dispatch(toggleAnimation(localStorage.getItem('animation') || themeConfig.animation));
+    //     dispatch(toggleNavbar(localStorage.getItem('navbar') || themeConfig.navbar));
+    //     dispatch(toggleLocale(localStorage.getItem('i18nextLng') || themeConfig.locale));
+    //     dispatch(toggleSemidark(localStorage.getItem('semidark') || themeConfig.semidark));
+    // }, [dispatch, themeConfig.theme, themeConfig.menu, themeConfig.layout, themeConfig.rtlClass, themeConfig.animation, themeConfig.navbar, themeConfig.locale, themeConfig.semidark]);
+
+    return (
+        // TODO: do theme later
+        // <div
+        //     className={`${(store.getState().themeConfig.sidebar && 'toggle-sidebar') || ''} ${themeConfig.menu} ${themeConfig.layout} ${
+        //         themeConfig.rtlClass
+        //     } main-section antialiased relative font-nunito text-sm font-normal`}
+        // >
+        //     {children}
+        // </div>
+        <div
+            className={`main-section antialiased relative font-nunito text-sm font-normal`}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+            {children}
+        </div>
+    );
 }
 
 export default App;
